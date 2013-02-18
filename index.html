@@ -113,5 +113,37 @@
   </span><li><span class="str">"do something else"</span></li><span class="pln">
 </span></ul>
 </pre>
+
+<h2>Адзінарнае двукосьсе</h2>
+<p>Радкі таксама можна запісваць з адзінарным двукосьсем:</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="str">'I am a string, too.'</span></li><span class="pln">
+</span></ul>
+</pre>
+<p>Зараз паспрабуйце так:</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="str">'I am a "double quote" in a single quote string.'</span></li><span class="pln">
+  </span><li><span class="str">"I am a 'single quote' in a double quote string."</span></li><span class="pln">
+</span></ul>
+</pre>
+І гэта:
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="str">'This won'</span><span class="pln">t work</span><span class="pun">.</span><span class="str">'</span></li><span class="str">
+</span></ul>
+</pre>
+<p>Звярніце ўвагу на тое, як Ваш камандны радок зьмяніўся з <code>&gt;</code> на <code>'&gt;</code>?
+    Вы знаходзіцеся ў незачыненым радку.
+    Надрукуйце <code>'</code> і націсніце enter. Вы атрымаеце памылку й вернецеся да звычайнага каманднага радку.</p><p>
+</p><p>Паспрабуйце вызначыць што рабіць у такім выпадку:</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="str">"This "</span><span class="pln">won</span><span class="str">'t" work, either."</span></li><span class="str">
+</span></ul>
+</pre>
+<p>Вы ня можаце выкарыстоўваць інтэрпаляцыю радкоў у адзінарных двукосьсях.</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">string_interpolation </span><span class="pun">=</span><span class="pln"> </span><span class="str">"a string to be interpolated"</span></li><span class="pln">
+  </span><li><span class="str">'In single quotes, you cannot use #{string_interpolation}.'</span></li><span class="pln">
+</span></ul>
+</pre>
 </body>
 </html>
