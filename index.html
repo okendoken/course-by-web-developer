@@ -146,7 +146,7 @@
 </span></ul>
 </pre>
 
-<h1>Зьмяненьне радкоў</h1>
+<h2>Зьмяненьне радкоў</h2>
 <p>Паспрабуйце:</p>
 <pre class="prettyprint"><ul class="irb"><span class="pln">
   </span><li><span class="str">'First string '</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">'Second string'</span></li><span class="pln">
@@ -174,6 +174,40 @@
 
 <p>Вы можаце карыстацца гэтым, калі Вам патрэбна стварыць радок дадзенай даўжыні, напрыклад, для тэставаньня.
     Паспрабуйце выканаць <code>'*' * 100</code> каб згенераваць радок зорачак.</p>
+
+
+    <h1>Элемэнты радкоў (З чаго складаецца радок)</h1>
+<p>Элемэнты ў радку гэта, вядома, лічбы, літары ды й любыя іншыя сымбалы. Каб дастаць элемэнт з радку, паспрабуйце выканаць:</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">my_string </span><span class="pun">=</span><span class="pln"> </span><span class="str">"symphony"</span></li><span class="pln">
+  </span><li><span class="pln">my_string</span><span class="pun">[</span><span class="lit">4</span><span class="pun">]</span></li><span class="pln">
+</span></ul>
+</pre>
+    <p>Гэта вярне чацвёрты сымбал у радку.</p>
+    <p>У праграмаваньні мы звычайна лічым пачынаючы з нуля.
+        Таму нулявы элемэнт майго радку my_string гэта <code>"s"</code> а чацёрты элемэнт - <code>"h"</code>.</p>
+    <p>Калі Вы хочаце дастаць больш элемэнтаў з радку:</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">my_string</span><span class="pun">[</span><span class="lit">2.</span><span class="pun">.</span><span class="lit">5</span><span class="pun">]</span></li><span class="pln">
+</span></ul>
+</pre>
+    <p>Гэтая каманда кажа Ruby вярнуць усе элемэнты з другога па пяты.</p>
+    <p>А што будзе калі выкарыстоўваць адмоўныя лікі? Паспрабуйце!</p>
+    <p>Таксама можна выкарыстоўваць вось такі сынтаксіс:</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">my_string</span><span class="pun">[</span><span class="lit">4</span><span class="pun">,</span><span class="lit">5</span><span class="pun">]</span></li><span class="pln">
+</span></ul>
+</pre>
+    <p>Такім чынам Вы пачнеце з чацвёртага элемэнта (памятайце мы пачынаем лічыць з 0!) і атрымаеце наступныя пяць сымбалаў.</p>
+    <p>Але ўсё адно не зразумела, што менавіта, гэтыя квадратныя дужкі робяць?
+        Ці памятаеце Вы, як апэратары апынуліся сінтаксычным цукрам для мэтадаў?
+        Паспрабуйце выканаць наступнае й Вы ўбачыце што дужкі таксама зьяўляюцца апэратарамі:</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">my_string</span><span class="pun">[</span><span class="lit">2</span><span class="pun">,</span><span class="lit">4</span><span class="pun">]</span></li><span class="pln">
+  </span><li><span class="pln">my_string</span><span class="pun">.[](</span><span class="lit">2</span><span class="pun">,</span><span class="lit">4</span><span class="pun">)</span></li><span class="pln">
+</span></ul>
+</pre>
+    <p>Гэтыя дзьве каманды эквівалентныя; першая ёсьць сінтаксічны цукар для другой.</p>
 
 </body>
 </html>
