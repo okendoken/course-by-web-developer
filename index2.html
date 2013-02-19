@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>2</title>
+    <style>
+        pre {
+            display: block;
+            padding: 9.5px;
+            margin: 0 0 10px;
+            font-size: 13px;
+            line-height: 20px;
+            word-break: break-all;
+            word-wrap: break-word;
+            white-space: pre;
+            white-space: pre-wrap;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0,0,0,0.15);
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+        }
+
+        .prettyprint {
+            padding: 8px;
+            background-color: #f7f7f9;
+            border: 1px solid #e1e1e8;
+        }
+
+        pre.prettyprint {
+            margin-bottom: 20px;
+        }
+
+        code {
+            padding: 2px 4px;
+            color: #d14;
+            background-color: #f7f7f9;
+            border: 1px solid #e1e1e8;
+        }
+
+        .post pre ul {
+            line-height: 0;
+            margin-bottom: -15px;
+            padding: 0;
+            padding: 9px 0 6px 25px;
+        }
+
+        pre ul.irb li, ul.bash li, ul.psql li {
+            list-style-type: none;
+            margin-left: -25px;
+        }
+
+        .post pre ul li{
+            line-height: 20px;
+        }
+
+        pre ul.bash li::before {
+            content: "$ \0020";
+        }
+        pre ul.irb li::before {
+            content: "> \0020";
+        }
+
+        .pln {
+            color: #48484c;
+        }
+
+        code, pre {
+            font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+            font-size:12px;
+        }
+
+        .pun, .opn, .clo {
+            color: #93a1a1;
+        }
+
+        .lit {
+            color: #195f91;
+        }
+
+        .str, .atv {
+            color: #D14;
+        }
+
+        .com {
+            color: #93a1a1;
+        }
+    </style>
+</head>
+<body>
+
+
+    <h1>Масівы</h1>
+    <p>Звычайна нам трэба захоўваць нашмат больш, чым проста адну рэч.
+        Напрылад, што калі нам патрэбна захаваць сьпіс месяцаў у годзе?</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">months </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="str">"january"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"february"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"march"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"april"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"may"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"june"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"july"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"august"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"september"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"november"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"december"</span><span class="pun">]</span></li><span class="pln">
+</span></ul>
+</pre>
+
+    <p>Гэта завецца <strong>array (масіў)</strong>.</p>
+
+    <p>Ніжэй тасама масівы. Паспрабуйце стварыць іх:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pun">[</span><span class="lit">2</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">7</span><span class="pun">,</span><span class="pln"> </span><span class="lit">3423</span><span class="pun">,</span><span class="pln"> </span><span class="lit">85</span><span class="pun">,</span><span class="pln"> </span><span class="lit">65</span><span class="pun">]</span></li><span class="pln">
+  </span><li><span class="pun">[</span><span class="str">"m"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"i"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"c"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"h"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"a"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"e"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"l"</span><span class="pun">]</span></li><span class="pln">
+  </span><li><span class="pun">[</span><span class="str">"word"</span><span class="pun">,</span><span class="pln"> </span><span class="lit">45</span><span class="pun">,</span><span class="pln"> </span><span class="str">"blah"</span><span class="pun">,</span><span class="pln"> </span><span class="lit">123</span><span class="pun">]</span></li><span class="pln">
+</span></ul>
+</pre>
+
+    <p>Зрабіце масівы з членамі вашае сямьі, любімымі лікамі і жывёламі, якіх вы найбольш баіцёся.</p>
+
+    <p>Вось яшчэ крыху прыгожых масіваў:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">variable </span><span class="pun">=</span><span class="pln"> </span><span class="str">"i'm a variable"</span></li><span class="pln">
+  </span><li><span class="pun">[</span><span class="pln">variable</span><span class="pun">,</span><span class="pln"> </span><span class="str">"i'm not a variable"</span><span class="pun">]</span></li><span class="pln">
+  </span><li><span class="pun">[</span><span class="lit">62</span><span class="pun">,</span><span class="pln"> </span><span class="lit">62</span><span class="pln"> </span><span class="pun">/</span><span class="pln"> </span><span class="lit">2</span><span class="pun">]</span></li><span class="pln">
+</span></ul>
+</pre>
+
+    <p>Зрабіце некалькі масіваў якія маюць зьменныя й выразы ( 893/183 напрыклад).</p>
+
+    <p>А што калі мета-масівы?</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pun">[</span><span class="str">"string"</span><span class="pun">,</span><span class="pln"> </span><span class="lit">123</span><span class="pun">,</span><span class="pln"> </span><span class="pun">[</span><span class="str">"another string"</span><span class="pun">,</span><span class="pln"> </span><span class="lit">456</span><span class="pun">],</span><span class="pln"> </span><span class="lit">321</span><span class="pun">,</span><span class="pln"> </span><span class="str">"yet another string"</span><span class="pun">]</span></li><span class="pln">
+</span></ul>
+</pre>
+
+    <p>Стварыце масівы, якія ўтрымліваюць іншыя масівы.
+        Яшчэ лепей, калі масів утрымоўвае зьменныя з іншымі масівамі.</p>
+
+
+
+        <h1>Элементы масіваў</h1>
+
+        <p>Вы можаце атрымаць элемент з масіва вось так:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">my_array </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="str">"peanut"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"almond"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"walnut"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"cashew"</span><span class="pun">]</span></li><span class="pln">
+  </span><li><span class="pln">my_array</span><span class="pun">[</span><span class="lit">2</span><span class="pun">]</span></li><span class="pln">
+</span></ul>
+</pre>
+
+        <p><code>2</code>, якая кажа Ruby з якога месца трэба ўзяць элемент завецца <strong>index</strong>.</p>
+
+        <p>Гэтак жа як і радкі, масівы пачынаюцца з нуля. Памятайце гэта!</p>
+
+        <p>У тых масіваў, якія Вы ўжо зрабілі паспрабуйце падаставаць якія-небудзь элементы.</p>
+
+        <p>Паспрабуйце з масівамі тыя апэрацыі, якія ёсьць у радкоў. Напрыклад
+            дзьве лічбы ў квадратных дужках (т.б. <code>my_array[2..3]</code>)
+            і адмоўныя індэксы. Будзе вельмі падобна на радкі :)</p>
+</body>
+</html>
