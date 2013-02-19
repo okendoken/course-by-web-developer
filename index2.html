@@ -155,5 +155,97 @@
         <p>Паспрабуйце з масівамі тыя апэрацыі, якія ёсьць у радкоў. Напрыклад
             дзьве лічбы ў квадратных дужках (т.б. <code>my_array[2..3]</code>)
             і адмоўныя індэксы. Будзе вельмі падобна на радкі :)</p>
+
+
+        <h1>Апэрацыі з масівамі</h1>
+        <p>Гэтак жа як і з радкамі, Вы можаце выкарыстоўваць апэратар <code>&lt;&lt;</code> каб дадаваць элемэнты ў масіў:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">my_array </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[]</span></li><span class="pln">
+  </span><li><span class="pln">my_array </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"hello world"</span></li><span class="pln">
+  </span><li><span class="pln">my_array</span></li><span class="pln">
+</span></ul>
+</pre>
+
+        <p>У параўнаньні з радком - shovel(рыдлёўка) - лепшы спосаб як дадаваць элемэнты ў масіў.</p>
+
+        <p>Паспрабуйце апэратар <code>+</code>.
+            Падказка: Вы можаце складаць два масіва, але ня можаце складаць масіў і радок.</p>
+
+
+        <h1>Мэтады масіваў</h1>
+
+        <p>Зараз Вы ўжо здолееце зразумець як выклікаць мэтады ў масіва.
+            Паспрабуйце даведацца што робяць гэтыя мэтады: <code>sort</code>, <code>length</code>, <code>reverse</code>, <code>+</code>, <code>last</code>, <code>pop</code>, <code>push</code>.</p>
+
+        <p>Яшчэ сінтаксічны цукар: апэратар shovel гэта сінтаксічны цукар мэтада <code>push</code>.</p>
+
+        <p>Варта праглядзець <a href="http://www.ruby-doc.org/core-1.9.3/Array.html" target="_blank">дакумэнтацыю Ruby для масіваў</a>.</p>
+
+
+        <h1>Масівы й радкі</h1>
+
+        <p>Паспрабуйце:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="str">"I am a programmer"</span><span class="pun">.</span><span class="pln">split</span></li><span class="pln">
+</span></ul>
+</pre>
+
+        <p>І гэта:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="str">"I,am,a,programmer"</span><span class="pun">.</span><span class="pln">split</span><span class="pun">(</span><span class="str">","</span><span class="pun">)</span></li><span class="pln">
+</span></ul>
+</pre>
+
+        <p>Па дэфолту, <code>split</code> выкарыстоўвае прабелы ў якасьці <strong>падзельніка (delimiter)</strong>.
+            Але Вы можаце перадаць любы падзяляльнік першым аргумэнтам.</p>
+
+        <p>Пагуляйце яшчэ з <code>split</code>. Паспрабуйце розныя падзяляльнікі.</p>
+
+        <p>Зараз паспрабуйце гэта:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pun">[</span><span class="str">"Please"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"join"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"me"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"back."</span><span class="pun">].</span><span class="pln">join</span><span class="pun">(</span><span class="str">" "</span><span class="pun">)</span></li><span class="pln">
+</span></ul>
+</pre>
+
+        <p>Што робіць гэты мэтад? Пагуляйце яшчэ зь імі выкарыстоўваючы розныя падзяляльнікі.</p>
+
+
+        <h1>Мэтад each (кожны)</h1>
+
+    <p>Зараз Вы ўжо маеце базавыя веды як працаваць з масівамі, таму давайце паспрабуем больш прасунуты канцэпт: <strong>looping (цыклы)</strong>.</p>
+
+        <p>Наш калькулятар можа лічыць суму двух лікаў, а што калі мы хочам падлічыць некалькі?
+            Мы будзем выкарыстоўваць мэтад <code>each</code>:</p>
+
+<pre class="prettyprint"><span class="pln">total </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pln">
+summands </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="lit">3</span><span class="pun">,</span><span class="lit">4</span><span class="pun">,</span><span class="lit">5</span><span class="pun">]</span><span class="pln">
+summands</span><span class="pun">.</span><span class="pln">each </span><span class="kwd">do</span><span class="pln"> </span><span class="pun">|</span><span class="pln">summand</span><span class="pun">|</span><span class="pln">
+  total </span><span class="pun">+=</span><span class="pln"> summand
+</span><span class="kwd">end</span><span class="pln">
+total</span></pre>
+
+        <p>Гэта трошкі складана, таму давайце разьбярэмся што адбываецца:</p>
+
+        <ol>
+            <li>Ствараецца зьменная <code>total</code> са значэньнем <code>0</code>.</li>
+            <li>Ствараецца масіў лічбаў які завецца <code>summands</code>.</li>
+            <li>Выклікаецца мэтад <code>each</code> у масіва <code>summands</code>.</li>
+            <li>Бярэцца першы элемэнт з <code>summands</code> і зьменнай <code>summand</code> прызначаецца яго значэньне.</li>
+            <li>У зьменную <code>total</code> дадаецца бягучы <code>summand</code>.</li>
+            <li>4 і 5 паўтараюцца для астатніх лікаў з <code>summands</code>.</li>
+        </ol>
+
+        <p>Код, які знаходзіцца паміж <code>do</code> і <code>end</code> завецца <strong>block</strong>.
+            Блок вельмі падобны на мэтад, толькі бяз назвы; зьменная паміж <code>|</code> як аргумэнт у мэтадзе.</p>
+
+        <p>Традыцыйна масіў называюць словам у множным ліку, а аргумэнт блока (у такім выпадку) ў адзіночным ліку
+            (т.б. <code>summands</code> для масіва й <code>summand</code> для аргумэнта).</p>
+
+        <p>Зараз падыйшла Вашая чарга. Напішыце цыкл, які б лічыў вынік множаньня ўсіх лікаў у масіве.
+            Павінна атрымацца вельмі падобна на код, які лічыць суму.</p>
 </body>
 </html>
