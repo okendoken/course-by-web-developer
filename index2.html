@@ -247,5 +247,174 @@ total</span></pre>
 
         <p>Зараз падыйшла Вашая чарга. Напішыце цыкл, які б лічыў вынік множаньня ўсіх лікаў у масіве.
             Павінна атрымацца вельмі падобна на код, які лічыць суму.</p>
+
+
+
+        <h1>puts</h1>
+    <p>Давайце прабяжымся па некаторым краінам і скажам якія яны маюць сталіцы:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">countries_with_capitals </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[[</span><span class="str">'Bangladesh'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'Dhaka'</span><span class="pun">],</span><span class="pln"> </span><span class="pun">[</span><span class="str">'Belize'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'Belmopan'</span><span class="pun">],</span><span class="pln"> </span><span class="pun">[</span><span class="str">'Bulgaria'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'Sofia'</span><span class="pun">]]</span></li><span class="pln">
+  </span><li><span class="pln">countries_with_capitals</span><span class="pun">.</span><span class="pln">each </span><span class="kwd">do</span><span class="pln"> </span><span class="pun">|</span><span class="pln">country_with_capital</span><span class="pun">|</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="str">"The capital of #{country_with_capital[0]} is #{country_with_capital[1]}."</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+</span></ul><span class="pln">
+ </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">[[</span><span class="str">"Bangladesh"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Dhaka"</span><span class="pun">],</span><span class="pln"> </span><span class="pun">[</span><span class="str">"Belize"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Belmopan"</span><span class="pun">],</span><span class="pln"> </span><span class="pun">[</span><span class="str">"Bulgaria"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Sofia"</span><span class="pun">]]</span></pre>
+
+        <p>Нічога не атрымалася. Мы не атрымалі нічога акрамя першапачатковага масіва. Што здарылася?</p>
+
+        <p>Давайце паглядзім на код, які лічыць суму лікаў:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">sum </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span></li><span class="pln">
+  </span><li><span class="pln">summands </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="lit">3</span><span class="pun">,</span><span class="lit">4</span><span class="pun">,</span><span class="lit">5</span><span class="pun">]</span></li><span class="pln">
+  </span><li><span class="pln">summands</span><span class="pun">.</span><span class="pln">each </span><span class="kwd">do</span><span class="pln"> </span><span class="pun">|</span><span class="pln">summand</span><span class="pun">|</span></li><span class="pln">
+  </span><li><span class="pln">  sum </span><span class="pun">+=</span><span class="pln"> summand</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+  </span><li><span class="pln">sum</span></li><span class="pln">
+</span></ul>
+</pre>
+
+        <p>Што мэтад <code>each</code> насамрэч вярнуў? Атрымліваецца што ў абодвух выпадках ён вярнуў незьмянённы масіў.
+            Дык як жа нам надрукаваць тое, што знаходзіцца ўнутры масіва?</p>
+
+        <p>Давайце даведаемся пра мэтад <code>puts</code>:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">countries_with_capitals </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[[</span><span class="str">'Bangladesh'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'Dhaka'</span><span class="pun">],</span><span class="pln"> </span><span class="pun">[</span><span class="str">'Belize'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'Belmopan'</span><span class="pun">],</span><span class="pln"> </span><span class="pun">[</span><span class="str">'Bulgaria'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'Sofia'</span><span class="pun">]]</span></li><span class="pln">
+  </span><li><span class="pln">countries_with_capitals</span><span class="pun">.</span><span class="pln">each </span><span class="kwd">do</span><span class="pln"> </span><span class="pun">|</span><span class="pln">country_with_capital</span><span class="pun">|</span></li><span class="pln">
+  </span><li><span class="pln">  puts </span><span class="str">"The capital of #{country_with_capital[0]} is #{country_with_capital[1]}."</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+</span></ul>
+</pre>
+
+        <p>Незьмянённы масіў усе так жа й вяртаецца, але <code>puts</code> друкуе кожную лінію на экран.
+            Калі Вам цікава што такое <code>puts</code> - гэта глабальны мэтад.
+            Дадайце дужкі аргумэнтам(т.б. <code>puts('hi')</code>) і Вам стане прасьцей гэта бачыць.</p><p>
+
+    </p><p>Пагуляйце з <code>puts</code>. Што будзе калі перадаць лічбу альбо масіў як аргумэнт?</p>
+
+        <p>Прабяжыцеся па масіву членаў вашае сямьі й скажыце кожнаму "Вітаньне!" .</p>
+
+
+
+        <h1>map і (рэфактарынг) refactoring</h1>
+        <p><strong>(Рэфактарынг) Refactoring</strong> - гэта працэс паляпшэньня існуючага кода, без зьмяненьня зьнешніх інтэрфэйсаў.
+            Пальпшэньне чатальнасьці, аптымізацыя прадукцыйнасьці і выдаленьне паўтарэньняў - прыклады рэфактарынга.
+            Давайце напішем трошкі коду, даведаемся пра новы сінтакс і некалькі мэтадаў і ў рэшце адрэфактарым код.</p>
+
+        <p>Спачатку напішам мэтад які ўдвойвае значэньне кожнага ліка ў масіве:</p>
+
+        <pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="kwd">def</span><span class="pln"> </span><span class="kwd">double</span><span class="pun">(</span><span class="pln">original_numbers</span><span class="pun">)</span></li><li class="L1"><span class="pln">  doubled_numbers </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[]</span></li><li class="L2"><span class="pln">  original_numbers</span><span class="pun">.</span><span class="pln">each </span><span class="kwd">do</span><span class="pln"> </span><span class="pun">|</span><span class="pln">original_number</span><span class="pun">|</span></li><li class="L3"><span class="pln">    doubled_numbers </span><span class="pun">&lt;&lt;</span><span class="pln"> original_number </span><span class="pun">*</span><span class="pln"> </span><span class="lit">2</span></li><li class="L4"><span class="pln">  </span><span class="kwd">end</span></li><li class="L5"><span class="pln">  </span><span class="kwd">return</span><span class="pln"> doubled_numbers</span></li><li class="L6"><span class="kwd">end</span></li></ol></pre>
+
+        <p>Першы рэфактарынг: шосты радок.</p>
+
+        <pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="kwd">def</span><span class="pln"> </span><span class="kwd">double</span><span class="pun">(</span><span class="pln">original_numbers</span><span class="pun">)</span></li><li class="L1"><span class="pln">  doubled_numbers </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[]</span></li><li class="L2"><span class="pln">  original_numbers</span><span class="pun">.</span><span class="pln">each </span><span class="kwd">do</span><span class="pln"> </span><span class="pun">|</span><span class="pln">original_number</span><span class="pun">|</span></li><li class="L3"><span class="pln">    doubled_numbers </span><span class="pun">&lt;&lt;</span><span class="pln"> original_number </span><span class="pun">*</span><span class="pln"> </span><span class="lit">2</span></li><li class="L4"><span class="pln">  </span><span class="kwd">end</span></li><li class="L5"><span class="pln">  doubled_numbers</span></li><li class="L6"><span class="kwd">end</span></li></ol></pre>
+
+        <p>Значэньне апошняй лініі, якая знаходзіцца ў мэтадзе, заўсёды вяртаецца, нават калі й няма ключавога слова <code>return</code>.
+            Рубісты рэдка карыстаюцца <code>return</code> і замест гэтага заўсёды карыстаюцца фактам таго, што апошняя лінія ўсё адно вяртаецца.
+            З гэтага моманту мы такскма ня будзем пісаць <code>return</code>, а проста будзем ведаць, што падлічаннае значэньне апошняга радка вяртаецца.</p>
+
+        <p>Другі рэфактарынг: калі код паміж <code>do</code> і <code>end</code> толькі адзін радок, блок можа быць запісаны вось так:</p>
+
+        <pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="kwd">def</span><span class="pln"> </span><span class="kwd">double</span><span class="pun">(</span><span class="pln">original_numbers</span><span class="pun">)</span></li><li class="L1"><span class="pln">  doubled_numbers </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[]</span></li><li class="L2"><span class="pln">  original_numbers</span><span class="pun">.</span><span class="pln">each </span><span class="pun">{|</span><span class="pln">original_number</span><span class="pun">|</span><span class="pln"> doubled_numbers </span><span class="pun">&lt;&lt;</span><span class="pln"> original_number </span><span class="pun">*</span><span class="pln"> </span><span class="lit">2</span><span class="pun">}</span></li><li class="L3"><span class="pln">  doubled_numbers</span></li><li class="L4"><span class="kwd">end</span></li></ol></pre>
+
+        <p>Ну вось ужо выглядае лепей!</p>
+
+        <p>Выглядае трошкі напружна што мы павінны мець асобную зьменную <code>doubled_numbers</code> толькі для таго, каб захоўваць падвоеныя лікі.
+            Было б файна калі <code>each</code> неяк вяртаў значэньні якія мы палічылі.</p>
+
+        <p>Для гэтага й патрэбен <code>map</code>:</p>
+
+        <pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="kwd">def</span><span class="pln"> </span><span class="kwd">double</span><span class="pun">(</span><span class="pln">original_numbers</span><span class="pun">)</span></li><li class="L1"><span class="pln">  original_numbers</span><span class="pun">.</span><span class="pln">map </span><span class="pun">{|</span><span class="pln">original_number</span><span class="pun">|</span><span class="pln"> original_number </span><span class="pun">*</span><span class="pln"> </span><span class="lit">2</span><span class="pun">}</span></li><li class="L2"><span class="kwd">end</span></li></ol></pre>
+
+        <p><code>original_numbers</code> не зьмянілася (няма <code>!</code>, які кажа, што гэта <strong>дэструктыўны мэтад</strong>).
+            Map проста бярэ ўсё што вяртаецца з блока й кладзе ў новы масіў.</p>
+
+        <p>Зараз гэты мэтад выглядае выдатна!</p>
+
+        <p>Пагуляйце яшчэ з <code>map</code> і сінтаксісам з фігурнымі дужкамі для <code>each</code> і <code>map</code>.
+            Паспрабуйце выкарыстаць <code>map</code> каб прабегчыся па масіву радкоў і вярнуць іх з вялікімі літарамі.</p>
+
+
+
+
+        <h1>inject і яшчэ рэфактарынг</h1>
+
+        <p>Давайце разглядзім яшчэ адзін <strong>итэратар (iterator)</strong> (так завецца мэтад, які бяжыць па масіву напрыклад <code>each</code> і <code>map</code>).</p>
+
+        <p>Вось як мы лічылі суму раней:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">sum </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span></li><span class="pln">
+  </span><li><span class="pln">summands </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="lit">3</span><span class="pun">,</span><span class="lit">4</span><span class="pun">,</span><span class="lit">5</span><span class="pun">]</span></li><span class="pln">
+  </span><li><span class="pln">summands</span><span class="pun">.</span><span class="pln">each </span><span class="kwd">do</span><span class="pln"> </span><span class="pun">|</span><span class="pln">summand</span><span class="pun">|</span></li><span class="pln">
+  </span><li><span class="pln">  sum </span><span class="pun">+=</span><span class="pln"> summand</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+  </span><li><span class="pln">sum</span></li><span class="pln">
+</span></ul>
+</pre>
+
+        <p>Спачатку, давайце перапішым мэтад каб ён прымаў масіў у якасьці аргумэнта:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="kwd">def</span><span class="pln"> sum</span><span class="pun">(</span><span class="pln">summands</span><span class="pun">)</span></li><span class="pln">
+  </span><li><span class="pln">  total </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span></li><span class="pln">
+  </span><li><span class="pln">  summands</span><span class="pun">.</span><span class="pln">each </span><span class="kwd">do</span><span class="pln"> </span><span class="pun">|</span><span class="pln">summand</span><span class="pun">|</span></li><span class="pln">
+  </span><li><span class="pln">    total </span><span class="pun">+=</span><span class="pln"> summand</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="kwd">end</span></li><span class="pln">
+  </span><li><span class="pln">  total</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+</span></ul>
+</pre>
+
+        <p>Потым выкарыстаем сінтаксіс з фігурнымі дужкамі:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="kwd">def</span><span class="pln"> sum</span><span class="pun">(</span><span class="pln">summands</span><span class="pun">)</span></li><span class="pln">
+  </span><li><span class="pln">  total </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span></li><span class="pln">
+  </span><li><span class="pln">  summands</span><span class="pun">.</span><span class="pln">each </span><span class="pun">{|</span><span class="pln">summand</span><span class="pun">|</span><span class="pln"> total </span><span class="pun">+=</span><span class="pln"> summand</span><span class="pun">}</span></li><span class="pln">
+  </span><li><span class="pln">  total</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+</span></ul>
+</pre>
+
+        <p>А зараз новы мэтад - <code>inject</code>. Карыстаемся ім:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="kwd">def</span><span class="pln"> sum</span><span class="pun">(</span><span class="pln">summands</span><span class="pun">)</span></li><span class="pln">
+  </span><li><span class="pln">  summands</span><span class="pun">.</span><span class="pln">inject</span><span class="pun">(</span><span class="lit">0</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{|</span><span class="pln">total</span><span class="pun">,</span><span class="pln"> summand</span><span class="pun">|</span><span class="pln"> total </span><span class="pun">+=</span><span class="pln"> summand</span><span class="pun">}</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+</span></ul>
+</pre>
+
+        <p>Паспрабуйце зразумець, што робіць <code>inject</code>. Спачатку яго будзе трошкі складана зразумець,
+            але ён - лепшае рашэньня для выпадкаў калі Вам патрэбна зьмяніць значэньне нейкай зьменнай на кожнай ітэрацыі.
+            Давайце разглядзім прыклад з<code>sum([2,4,6])</code>.
+            Звярніце ўвагу што блок прымае на ўваход два аргумэнта: <code>total</code> і <code>summand</code>.</p>
+
+        <ol>
+            <li><code>summands</code> усталёўваецца ў <code>[2,4,6]</code>.</li>
+            <li><code>inject</code> выклікаецца ў <code>summands</code>.</li>
+            <li><code>total</code> усталёўваецца роўным <code>0</code> - першаму аргумэнту <code>inject</code>.</li>
+            <li><code>summand</code> усталёўваецца роўным нулявому элемэнту <code>summands</code>: <code>2</code>.</li>
+            <li><code>summand</code> дадаецца да <code>total</code>: <code>0 + 2 = 2</code>.</li>
+            <li><code>inject</code> рухаецца на наступную ітэрацыю цыкла.
+                    Новае значэньне <code>total</code> (<code>2</code>) "уводзіцца" ў наступную ітэрацыю, а <code>summand</code> усталёўваецца роўным наступнаму элемэнту масіва (<code>4</code>).</li>
+            <li>Крокі 5 і 6 паўтараюцца для астатніх элемэнтаў масіва.</li>
+                <li>Вяртаецца канчатковае значэньне <code>total</code>: <code>12</code>.</li>
+        </ol>
+
+        <p>Гэтак жа як і <code>summand</code> <code>total</code> гэта проста назва зьменнай, якую Вы можаце зьменіць на што пажадаеце ў залежнасьці ад абставін.</p>
+
+        <p>Калі Вы не перадаёце аргумэнт у <code>inject</code>, першы аргумэнт функцыю ўсталёўваецца роўным нулявому элемэнту масіва. Таму мы можам напісаць:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">summands</span><span class="pun">.</span><span class="pln">inject </span><span class="pun">{|</span><span class="pln">total</span><span class="pun">,</span><span class="pln"> summand</span><span class="pun">|</span><span class="pln"> total </span><span class="pun">+=</span><span class="pln"> summand</span><span class="pun">}</span></li><span class="pln">
+</span></ul>
+</pre>
+
+        <p>Пагуляйце яшчэ з <code>inject</code>.
+            Выкарыстайце яго каб падлічыць вынік множаньня ўсіх элемэнтаў у масіве.</p>
 </body>
 </html>
