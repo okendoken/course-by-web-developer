@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>2</title>
+    <style>
+        pre {
+            display: block;
+            padding: 9.5px;
+            margin: 0 0 10px;
+            font-size: 13px;
+            line-height: 20px;
+            word-break: break-all;
+            word-wrap: break-word;
+            white-space: pre;
+            white-space: pre-wrap;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0,0,0,0.15);
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+        }
+
+        .prettyprint {
+            padding: 8px;
+            background-color: #f7f7f9;
+            border: 1px solid #e1e1e8;
+        }
+
+        pre.prettyprint {
+            margin-bottom: 20px;
+        }
+
+        code {
+            padding: 2px 4px;
+            color: #d14;
+            background-color: #f7f7f9;
+            border: 1px solid #e1e1e8;
+        }
+
+        .post pre ul {
+            line-height: 0;
+            margin-bottom: -15px;
+            padding: 0;
+            padding: 9px 0 6px 25px;
+        }
+
+        pre ul.irb li, ul.bash li, ul.psql li {
+            list-style-type: none;
+            margin-left: -25px;
+        }
+
+        .post pre ul li{
+            line-height: 20px;
+        }
+
+        pre ul.bash li::before {
+            content: "$ \0020";
+        }
+        pre ul.irb li::before {
+            content: "> \0020";
+        }
+
+        .pln {
+            color: #48484c;
+        }
+
+        code, pre {
+            font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+            font-size:12px;
+        }
+
+        .pun, .opn, .clo {
+            color: #93a1a1;
+        }
+
+        .lit {
+            color: #195f91;
+        }
+
+        .str, .atv {
+            color: #D14;
+        }
+
+        .com {
+            color: #93a1a1;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<h2>Апэратары параўнаньня</h2>
+<p>Вы ўжо даведаліся пра лікі, радкі і масівы. Вы таксама ведаеце як працаваць цыкламі. А зараз давайце дададім трошкі лёгікі ў наш код.</p>
+
+<p>Паспрабуйце надрукаваць:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">age </span><span class="pun">=</span><span class="pln"> </span><span class="lit">18</span></li><span class="pln">
+  </span><li><span class="kwd">if</span><span class="pln"> age </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">21</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="str">"Sorry, you can't buy alcohol."</span></li><span class="pln">
+  </span><li><span class="kwd">else</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="str">"What would you like to drink?"</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+</span></ul>
+</pre>
+
+<p>Гэта завецца разгалінаваньне. Вось больш складаная вэрсія:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">age </span><span class="pun">=</span><span class="pln"> </span><span class="lit">18</span></li><span class="pln">
+  </span><li><span class="kwd">if</span><span class="pln"> age </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">21</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="str">"Sorry, you can't buy alcohol."</span></li><span class="pln">
+  </span><li><span class="kwd">elsif</span><span class="pln"> age </span><span class="pun">==</span><span class="pln"> </span><span class="lit">21</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="str">"Can I see your passport?"</span></li><span class="pln">
+  </span><li><span class="kwd">else</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="str">"What would you like to drink?"</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+</span></ul>
+</pre>
+
+<p>Калі мы хочам даведацца ці роўныя якія-небудзь дзьве велічыні мы выкарыстоўваем апэратар <code>==</code>.
+    Калі мы ўсталёўваем значэньне зьменнай роўнай чамусьці мы выкарыстоўваем <code>=</code>.
+    Зблытаць гэтыя дзьве рэчы - вельмі частая памылка сярод пачынаючых праграмістаў.</p>
+
+<p>Напішыце некалькі праграмаў у якіх ёсьць разгалінаваньне карыстаючыся <code>&gt;=</code>, <code>&lt;=</code>, <code>!=</code>.</p>
+
+<p>У даданьне да ключавых словаў <code>if</code>, <code>else</code> і <code>elsif</code>, існуе яшчэ адно ключавое слова для параўнаньня: <code>unless</code>. Высветліце што яно робіць.</p>
+
+<p>Ці памятаеце Вы як арытмэтычныя апэратары такія як <code>+</code> і <code>-</code> насамрэч былі сінтаксічным цукрам для мэтадаў з такімі ж назвамі?
+    Цікава ці выконваецца тое ж самае правіла для апэратараў параўнаньня (<code>==</code>, <code>&lt;</code> і <code>&gt;</code>)...</p>
+
+
+
+
+<h2>&amp;&amp; і ||</h2>
+<p>Паспрабуйце вось такі сінтаксіс:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="kwd">if</span><span class="pln"> looks </span><span class="pun">==</span><span class="pln"> </span><span class="str">'handsome'</span><span class="pln"> </span><span class="pun">&amp;&amp;</span><span class="pln"> intelligence </span><span class="pun">==</span><span class="pln"> </span><span class="str">'smart'</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="str">"Sure, I'd love to have dinner with you."</span></li><span class="pln">
+  </span><li><span class="kwd">elsif</span><span class="pln"> looks </span><span class="pun">==</span><span class="pln"> </span><span class="str">'handsome'</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="str">"I'm sorry, I'm actually busy that night. But maybe some other time."</span></li><span class="pln">
+  </span><li><span class="kwd">else</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="str">"Um, I gotta go."</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+</span></ul>
+</pre>
+
+<p><code>&amp;&amp;</code> значыць <strong>and (і)</strong>.</p>
+
+<p>Зараз паспрабуйце <code>||</code>, які значыць <strong>or (або)</strong>.</p>
+
+<p>Цікавы факт:
+    Вы можаце выкарыстоўваць прама гэтыя словы <code>and</code> і <code>or</code> замест адпавядаючых апэратараў.</p>
+
+
+
+
+<h2>Booleans</h2>
+<p><strong>Boolean</strong> гэта нешта, што адлюстроўвае <code>true (праўду)</code> або <code>false (хлусьню)</code>.</p>
+
+<p>Мы сустракаліся ўжо раней зь імі, але ня ведалі хто яны:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="lit">6.even</span><span class="pun">?</span></li><span class="pln">
+  </span><li><span class="lit">8.odd</span><span class="pun">?</span></li><span class="pln">
+  </span><li><span class="lit">4.between</span><span class="pun">?(</span><span class="lit">4</span><span class="pun">,</span><span class="lit">5</span><span class="pun">)</span></li><span class="pln">
+</span></ul>
+</pre>
+
+<p>У Ruby мэтад скончаючыся на <code>?</code> традыцыйна вяртае булен.
+
+</p><p>Вы можаце прама карыстацца <code>true</code> ці <code>false</code> проста друкуючы іх. Паспрабуйце.</p>
+
+<p>Калі Вы ствараеце мэтад, які вяртае булен яго назва павінна скончвацца на <code>?</code>. Напрыклад:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="kwd">def</span><span class="pln"> can_vote</span><span class="pun">?(</span><span class="pln">age</span><span class="pun">)</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="kwd">if</span><span class="pln"> age </span><span class="pun">&gt;=</span><span class="pln"> </span><span class="lit">18</span></li><span class="pln">
+  </span><li><span class="pln">    </span><span class="kwd">true</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="kwd">else</span></li><span class="pln">
+  </span><li><span class="pln">    </span><span class="kwd">false</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="kwd">end</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+</span></ul>
+</pre>
+
+<p>Стварыце некалькі сваіх булевых мэтадаў, напрыклад <code>can_drink?</code>.</p>
+
+<p>Усе апэратары параўнаньня вяртаюць булен:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="lit">3</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">5</span></li><span class="pln">
+</span></ul>
+</pre>
+
+<p>Таму мы можам паменшыць наш мэтад <code>can_vote?</code>:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="kwd">def</span><span class="pln"> can_vote</span><span class="pun">?(</span><span class="pln">age</span><span class="pun">)</span></li><span class="pln">
+  </span><li><span class="pln">  age </span><span class="pun">&gt;=</span><span class="pln"> </span><span class="lit">18</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+</span></ul>
+</pre>
+
+
+
+
+<h2>nil</h2>
+<p>Ці заўважалі Вы <code>nil</code>? Вось некалькі месцаў дзе ён мог вылазіць:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">puts </span><span class="str">'hi'</span></li><span class="pln">
+</span></ul><span class="pln">
+hi
+ </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="kwd">nil</span></pre>
+
+<p>Вось яшчэ:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="kwd">def</span><span class="pln"> some_method</span></li><span class="pln">
+  </span><li><span class="pln">  puts </span><span class="str">"I'm a method"</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+</span></ul><span class="pln">
+ </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="kwd">nil</span></pre>
+
+<p>Магчыма Вы бачылі яго тут:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">some_array </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="str">'a'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'b'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'c'</span><span class="pun">]</span></li><span class="pln">
+  </span><li><span class="pln">some_array</span><span class="pun">[</span><span class="lit">3</span><span class="pun">]</span></li><span class="pln">
+</span></ul>
+</pre>
+
+<p><code>nil</code> адрозьніваецца ад <code>0</code>, або пустога радка <code>""</code>, або пустога масіва<code>[]</code>.</p>
+
+<p><code>nil</code> - гэта нішто. Вельмі дзэн.</p>
+
+
+
+
+<h2>Праўдзівасьць</h2>
+<p>Паспрабуйце:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="kwd">if</span><span class="pln"> </span><span class="lit">5</span><span class="pln"> </span><span class="pun">&gt;</span><span class="pln"> </span><span class="lit">3</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="str">"it was true"</span></li><span class="pln">
+  </span><li><span class="kwd">else</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="str">"it was false"</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+</span></ul>
+</pre>
+
+<p>Ня дзіўна. А што калі:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">loves_cake </span><span class="pun">=</span><span class="pln"> </span><span class="str">"i love cake"</span></li><span class="pln">
+  </span><li><span class="kwd">if</span><span class="pln"> loves_cake</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="str">"it was truth-y"</span></li><span class="pln">
+  </span><li><span class="kwd">else</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="str">"it was false-y"</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+</span></ul>
+</pre>
+
+<p>Адкуль Ruby ведае што мне падабаюцца пірагі?</p>
+
+<p>Спачатку, давайце зробім крок назад.
+    Калі мы кажам <code>if 5 &gt; 3</code>..., вось што насамрэч адбываецца: Ruby выконвае <code>5 &gt; 3</code>,
+    што вяртае <code>true</code>. Потым, <code>if</code> глядзіць на вынік і выконвае блок коду толькі тады, калі вярнулася <code>true</code>.</p>
+
+<p>Але часам, мы хочам кантраляваць выкананьне праграмы ня толькі булем.
+    Вельмі часты прыклад - гэта выканаць адну частку кода калі якая-небудзь зьменная роўная <code>nil</code> і выканаць нешта іншае ў адваротным выпадку.
+    У Ruby <code>nil</code> "хлусьлівы": ён насамрэч не <code>false</code>, але ў тым выпадку калі ён знаходзіцца на месцы, дзе павінен быць булен,
+    ён разглядаецца роўным <code>false</code>.
+    Усё астатняе ў Ruby "праўдзіва": лікі, радкі, масівы і г.д.</p>
+
+<p>Даведайцеся, зьменная, роўная <code>0</code>, інтэрпрэтуецца як праўда або хлусьня?</p>
+
+
+
+
+<h2>Рэдактар тэксту</h2>
+<p>Так як мэтады, якія мы пішам робяцца ўсё больш і больш, становіцца ўсё складаней і напружней друкаваць іх у кансолі -
+    Вы ня можаце вярнуцца назад і перапісаць толькі адну частку - Вам трэба перапісваць увесь мэтад.
+    Таксама няма месца дзе захоўваць Вашую працу.
+    Давайце карыстацца выдатнай рэччу: <strong>рэдактарам тэксту</strong>.</p>
+
+<p>Рэдактары тэксту адрозьніваюцца ад праграм накштал Word тым, што яны адлюстроўваюць сыры, просты тэкст - Вы ня можаце карыстацца такімі рэчамі як памер шрыфта, загалоўкі й г.д.
+    Гэта ідэяльна падыходзіць для праграмаваньня,
+    дзе нам не патрэбны розныя сродкі стыляваньня тэксту.</p>
+
+<p>Два рэдактара тэксту вельмі папулярны ў асяродзьдзі Рубі-праграмістаў. Першы - <a href="http://www.jetbrains.com/ruby/" target="_blank">Ruby Mine</a>.
+    Другі - <a href="http://www.sublimetext.com/" target="_blank">Sublime Text</a>.</p>
+<p>Яны абодва бясплатныя каб паспрабаваць, але ліцэнзія, вядома, каштуе грошаў. Пампуйце той, які больш падабаецца. Кожны зь іх - выдатная рэч.</p>
+
+<p>Адна з мацнейшых рыс такіх рэдактараў тэксту - гэта <strong>падсвятленьне сінтаксісу</strong>.
+    Адчыніце Ruby Mine стварыце новы праект, а потым новы файл, напрылад <code>test.rb</code>. <code>.rb</code> - гэта традыцыйна пашырэньне файлаў Ruby,
+    таму Ruby Mine спазнае яго й дапаможа Вам з спецыяльным, спецыфічным для Рубі функцыяналам. Зараз надрукуйце:</p>
+
+<pre class="prettyprint"><span class="kwd">def</span><span class="pln"> say_hello
+  puts </span><span class="str">'hello world'</span><span class="pln">
+</span><span class="kwd">end</span></pre>
+
+<p>Звярніце ўвагу на тое, як каляры зьмяніліся, і сталі падабнымі на такія, як у прыкладах у нас на сайце.
+    Гэта дапаможа Вам пазьбегнуць сінтаксічных памылак.</p>
+
+<p>Яшчэ адна выдатная рэч - гэта магчымасьць выконваць код Ruby прама ў рэдактару тэкста. Цісніце Ctrl + Shift + F10 (у Sublime, Ctrl + B) каб выканаць усё тое, што знаходзіцца ў файле.
+    Вы ўбачыце ўсе, што выводзіце з дапамогай <code>puts</code>. Давайце паспрабуем:</p>
+
+<pre class="prettyprint"><span class="kwd">def</span><span class="pln"> say_hello
+  puts </span><span class="str">'hello world'</span><span class="pln">
+</span><span class="kwd">end</span><span class="pln">
+say_hello</span></pre>
+
+<p>Цісніце Ctrl + Shift + F10 (у Sublime, Ctrl + B) каб выканаць код.</p>
+
+<p>Звярніце ўвагу на апошні радок. Вы павінны выклікаць мэтад <code>say_hello</code>.
+    Калі гэтага радку ня будзе, мэтад ня будзе выкліканы - нічога ня будзе адлюстрована -
+    Запомніце, вызначэньне мэтада вяртае <code>nil</code>,
+    таму, да тых пор, пакуль мы ня выклікаем мэтад, нічога не адбудзецца.</p>
+
+
+
+
+<h2>Яшчэ адзін</h2>
+
+<p>Давайце пачнем з простага мэтада, які завецца <code>one_more</code>
+    які прымае масіў і вяртае іншы масіў з паўтораным апошнім элемэнтам.</p>
+
+<p>Вось такі юніт-тэст:</p>
+
+<blockquote><code>one_more([1, 2, 3])</code> мусіць быць роўна <code>[1, 2, 3, 3]</code>.</blockquote>
+
+<p>Выкарыстоўвайце наступныя крокі калі пішыце код і правяраеце яго з юніт-тэстамі:</p>
+
+<ol>
+    <li>Стварыце новы файл з пашырэньнем <code>.rb</code> - у гэтым выпадку, магчыма, <code>one_more.rb</code>.</li>
+    <li>Устаце некалькі пустых лініяў а потым надрукуйце Вашыя юніт-тэсты ў нізе старонцы - у гэтым выпадку, надрукуйце <code>one_more([1, 2, 3])</code> у нізе.</li>
+    <li>Карыстайцеся <code>puts</code> каб адлюстроўваць чаканы вынік і вынік, які атрымаўся - т.б., <code>puts "#{one_more([1, 2, 3])} should return [1, 2, 3, 3]."</code>.</li>
+    <li>Напішыце свой код і выканайце яго Ctrl + Shift + F10 (Ctrl + B).</li>
+    <li>Праверце каб вынік, які адлюстроўваецца, супадае з чаканым вынікам тэста.</li>
+</ol>
+
+
+
+
+<h2>Сартаваньне словаў</h2>
+<p>Стварыце праграму з мэтадам <code>word_sort</code> які прымае масіў слоў у ніжнім рэгістры
+    я вяртае масіў, адсартаваны па альфабэту.
+    Мэтад <code>sort</code> робіць справу досыць лёгкай.</p>
+
+<p>Тэст:</p>
+
+<blockquote><code>word_sort(['snake', 'cantaloupe', 'grandmother'])</code> should equal <code>['cantaloupe', 'grandmother', 'snake']</code>.</blockquote>
+
+<p>Добрая звычка якую варта мець:
+    Калі б Вы не адчынялі штосьці, што мусіць быць зачынена - напрыклад: <code>def</code> ці <code>do</code>,
+    зачыняйце гэта <strong>перад тым</strong> як пачнеце пісаць штосьці ўнутры.
+    Такім чынам я магу пачаць пісаць якую-небудзь праграму вось так:</p>
+
+<pre class="prettyprint"><span class="kwd">if</span><span class="pln"> power </span><span class="pun">&gt;</span><span class="pln"> </span><span class="lit">10</span><span class="pln">
+
+</span><span class="kwd">else</span><span class="pln">
+
+</span><span class="kwd">end</span></pre>
+
+<p>потым вярнуцца й усе запоўніць:</p>
+
+<pre class="prettyprint"><span class="kwd">if</span><span class="pln"> power </span><span class="pun">&gt;</span><span class="pln"> </span><span class="lit">10</span><span class="pln">
+  puts </span><span class="str">"That's a lot of power!"</span><span class="pln">
+</span><span class="kwd">else</span><span class="pln">
+  puts </span><span class="str">"You need more power."</span><span class="pln">
+</span><span class="kwd">end</span></pre>
+
+<p>Гэта дапаможа Вам пазбавіцца частых памылак з сінтаксісам.</p>
+
+<p>Хто ня верыць, што гэтая звычка, вартая таго, каб вучыцца ёй з самага пачатку - ня вучыцеся ёй. Вы ўсё адно прыйдзеце да разуменьня, што гэта патрэбна, але шляхам спроб, памылак і шматгадзінных
+    пошукаў страчанай дужкі або <code>end</code>'а :)</p>
+
+
+
+
+<h2>Лібімая лічба</h2>
+<p>Мая любімая лічба - 13.
+    Напішыце мэтад <code>favorite_number?</code> які прымае лічбу на ўваход.
+    Калі яна менш чым 13 (або вашае любімае лічбы), мэтад мусіць вяртаць "Little higher...";
+    калі больш чым 13 - "Little lower...";
+    і калі лічба роўна 13, мэтад мусіць вяртаць "That's my favorite number!"</p>
+
+<p>Выкарыстоўвайце водступы каб зрабіць Ваш код можна было прасьцей чытаць.
+    Калі Вы ня робіць водступы - гэта можа захаваць Вам долі сякунды,
+    але гэта будзе каштаваць Вам некалькі гадзін каб знайсьці памылку й зразумець што ідзе ня так.
+    Вось як выглядаюць правільныя водступы:</p>
+
+<pre class="prettyprint"><span class="kwd">def</span><span class="pln"> my_method
+  </span><span class="kwd">if</span><span class="pln"> </span><span class="com">#something</span><span class="pln">
+    </span><span class="com">#do something</span><span class="pln">
+  </span><span class="kwd">elsif</span><span class="pln"> </span><span class="com">#something else</span><span class="pln">
+    </span><span class="com">#do something else</span><span class="pln">
+  </span><span class="kwd">end</span><span class="pln">
+</span><span class="kwd">end</span></pre>
+
+<p>Юніт-тэсты:</p>
+
+<blockquote><code>favorite_number(12)</code> should equal <code>'Little higher...'</code>.<br>
+    <code>favorite_number(14)</code> should equal <code>'Little lower...'</code>.<br>
+    <code>favorite_number(13)</code> should equal <code>'That's my favorite number!'</code>.</blockquote>
+
+
+
+
+<h2>Пераступны(высакосны) год</h2>
+<p>З гэта кропкі мы пачнем пісаць насамрэч складаныя мэтады. Але нельга здавацца!</p>
+
+<p>Пераступныя гады падзяляюцца на 4 (напрыклад 1992 і 1996).
+    Праўда ёсьць выключэньне, і, выключэньне ў выключэньне:
+    Калі год падзяляецца на 100 - гэта не пераступны год (напрыклад 1900),
+    калі год яшчэ падзяляецца на 400, тады гэта пераступны (як год 2000).</p>
+
+<p>Стварыце мэтад <code>leap_year?</code> які прымае год як аргумэнт і вяртае <code>true</code> калі год пераступны й <code>false</code> калі не.</p>
+
+<p>Апэратар <code>%</code> будзе вельмі зручным у гэтым заданьні.</p>
+
+<p>Юніт тэсты:</p>
+
+<blockquote><code>leap_year?(1983)</code> should equal <code>false</code>.<br>
+    <code>leap_year?(1992)</code> should equal <code>true</code>.<br>
+    <code>leap_year?(1900)</code> should equal <code>false</code>.<br>
+    <code>leap_year?(2000)</code> should equal <code>true</code>.</blockquote>
+
+<p>Гэта самая складаная праграма, якую Вы рабілі дагэтуль.
+    Замест таго, каб спрабаваць стварыць усю праграму адразу,
+    сфакусуйцеся па чарзе на кожным юніт-тэсце.
+    Зрабіце, каб першы выканаўся, потым другі, потым трэці й у рэшце, чацвёрты.
+    Вы будзеце нашмат больш прадукцыйны, калі будзеце вырашаць адно пытаньне за раз.</p>
+
+
+
+
+
+<h2>Github</h2>
+<p>Вы пачынаеце пісаць даволі крутыя праграма зараз і таму, Вы павінны мець магчымасьць
+    паказаць іх сьвету.
+    Пазнаёмьцеся з <a href="https://github.com/" target="_blank">Github</a> і стварыце аккаўнт сабе.
+    Github дазваляе Вам паказваць код усім людзям (шаріць), супрацоўнічаць і мець бэкап Вашых дадзеных.</p>
+
+<p>Самы лёгкі спосаб расшаріць такіе маленькія праграмы як Вашы - гэта <em>Gist</em>.
+    Калі Вы залагінены ў Github, зверху ёсьць спасылка, якая завецца Gist.
+    Цісніце яе й Вы зможаце стварыць новы Gist.
+    Скапіюце код 'Пераступных гадоў' у Gist, выбярыце Ruby як мову праграмаваньня й дайце яму тлумачэньне.
+    Потым цісніце 'Create Public Gist'.
+    Зараз Вы можаце паказаць Ваш код усім Вашым сябрам.</p>
+<p>Усе прыктыкаваньні, якія Вам падаюцца складанымі й якія Вы здолелі зрабіць дадавайце ў Гіст.
+    Такім чынам Вы будзеце мець паблік-партфоліё вашае працы.</p>
+
+
+
+
+
+
+
+<h2>Трыкутнік</h2>
+<p>Стварыце мэтад <code>triangle</code> які прымае тры лічбы як аргумэнты.
+    Праграма мусіць вяртаць радок, які ў залежнасьці даўжыні ліній, кажа які трыкутнік гэта роўнабаковы, роўнабедраны або нераўнабаковы трыкутнік.
+    Нагадаем што гэта значыць:</p>
+
+<ul>
+    <li><em>роўнабаковы</em>: усе бакі роўныя;</li>
+    <li><em>роўнабедраны</em>: толькі два бакі роўныя;</li>
+    <li><em>нераўнабаковы</em>: усе бакі розныя.</li>
+</ul>
+
+<p>Памятайце што ня ўсе камбінацыі складаюць трыкутнік.
+    Напрыклад, (2,2,8) ня ёсьць трыкутнік.
+    Галоўнае правіла - калі адзін з бакоў роўны або больш за астатнія два, тады гэта не трыкутнік. У такім выпадку вяртайце <code>"invalid"</code>.
+
+</p><p>Спачатку напішыце тэст для роўнабаковага трыкутніка, стварыце праграму каб яго праверыць, потым рабіце тое ж самае для астатніх выпадкаў.</p>
+
+<p>Калі скончыце - не забудзьцеся адрэфактарыць Ваш код і потым запусьціце праграму зноў, каб упэўніца што Вы нічога не зламалі.</p>
+
+
+
+
+<h2>З вялікай літары</h2>
+
+<p>
+</p><p>Стварыце мэтад <code>title_case</code> які прымае на ўваход радок і робіць кожную першую літару словаў вялікай. Астатнія мусяць быць маленькімі.</p>
+
+<p>Напішыце тэсты для розных уваходных дадзеных: усе маленькімі літарамі, усе вялікімі, маленькімі й вялікімі ўперамешку, адно слова, шмат словаў і ўсё што Вы можаце прыдумаць.</p>
+
+<p>Не забудзьцеся пра рэфактарынг.</p>
+
+
+
+
+<h2>Фактарыял</h2>
+<p>Фактарыял - гэта апэратар, якія памнажае цэлы лік на ўсе цэлыя лікі менш чым ён сам. Напрыклад 5! = 5 * 4 * 3 * 2 * 1 = 120.</p>
+
+<p>Па азначэньні - 0! = 1.</p>
+
+<p>Стварыце мэтад <code>factorial</code> каб лічыць фактарыялы. Дыяпазоны будуць вельмі зручныя тут.</p>
+
+<p>Але спачатку напішыце тэсты!
+    Я бы пачаў для станоўчых лікаў, выканаў праверку; потым для нуля, выканаў праверку; і для адмоўных лікаў.</p>
+
+<p>І, вядома, рэфактарынг у канцы.</p>
+
+</body>
+</html>
