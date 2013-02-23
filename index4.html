@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        pre {
+            display: block;
+            padding: 9.5px;
+            margin: 0 0 10px;
+            font-size: 13px;
+            line-height: 20px;
+            word-break: break-all;
+            word-wrap: break-word;
+            white-space: pre;
+            white-space: pre-wrap;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0,0,0,0.15);
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+        }
+
+        .prettyprint {
+            padding: 8px;
+            background-color: #f7f7f9;
+            border: 1px solid #e1e1e8;
+        }
+
+        pre.prettyprint {
+            margin-bottom: 20px;
+        }
+
+        code {
+            padding: 2px 4px;
+            color: #d14;
+            background-color: #f7f7f9;
+            border: 1px solid #e1e1e8;
+        }
+
+        .post pre ul {
+            line-height: 0;
+            margin-bottom: -15px;
+            padding: 0;
+            padding: 9px 0 6px 25px;
+        }
+
+        pre ul.irb li, ul.bash li, ul.psql li {
+            list-style-type: none;
+            margin-left: -25px;
+        }
+
+        .post pre ul li{
+            line-height: 20px;
+        }
+
+        pre ul.bash li::before {
+            content: "$ \0020";
+        }
+        pre ul.irb li::before {
+            content: "> \0020";
+        }
+
+        .pln {
+            color: #48484c;
+        }
+
+        code, pre {
+            font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+            font-size:12px;
+        }
+
+        .pun, .opn, .clo {
+            color: #93a1a1;
+        }
+
+        .lit {
+            color: #195f91;
+        }
+
+        .str, .atv {
+            color: #D14;
+        }
+
+        .com {
+            color: #93a1a1;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Што такое Хэш</h1>
+<p>Перад тым як мы пойдзем далей, давайце разглядзім яшчэ адзін тым аб'ектаў Рубі - <strong>(хэшы) hashes</strong>.</p>
+<p>Хэшы выглядаюць як тэлефоныя кнігі.
+    Паспрабуйце выканаць гэта ў кансолі:</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">phones </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="str">"Elizabeth"</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="lit">4155551212</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Robert"</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="lit">6505551212</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Christopher"</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="lit">5105551212</span><span class="pun">}</span></li><span class="pln">
+  </span><li><span class="pln">phones</span><span class="pun">[</span><span class="str">"Elizabeth"</span><span class="pun">]</span></li><span class="pln">
+</span></ul>
+</pre>
+<p>Гэта нешта накшталт масіваў,
+    але замест таго, каб карыстацца лікавым індэксам каб зьвярнуцца да элемэнта, мы карыстаемся <strong>ключом (key)</strong>
+    каб вымаць <strong>значэньне (value)</strong>.</p>
+<p>Код <code>=&gt;</code> завецца <strong>hash rocket</strong>; ключ злева, а значэньне справа.</p>
+<p>Вы можаце зьмяніць значэньні ва існуючым хэшэ:</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="pln">phones</span><span class="pun">[</span><span class="str">"Elizabeth"</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="lit">3105551212</span></li><span class="pln">
+  </span><li><span class="pln">phones</span></li><span class="pln">
+</span></ul>
+</pre>
+<p>Адна рэч, якую варта запомніць пра хэшы, гэта, што яны ў адрозьнене ад масіваў, не захоўваюць свае элемэнты ў якім-небудзь канкрэтным парадку.</p>
+<p>Стварыце хэш з нікнэймамі Вашых сяброў у якасьці ключоў і іхнымі сапраўднымі імёнамі ў якасьці значэньняў.</p>
+<p>Стварыце хэш, з назвамі страў і іх коштамі ў кавярне.
+    Потым выкарыстайце мэтад <code>each</code> каб зрабіць зніжку 20% на кожную страву.</p>
+<p>Самі адшукайце дакумэнтацыю Ruby па хэшам і праглядзіце якія яшчэ мэтады ёсьць для іх.</p>
+
+
+<h1>Вызначэньне класа</h1>
+<p>Зараз мы знаходзімся ў кропке, калі прыйшоў час вярнуцца назад і паспрабаваць зразумець вялікую карціну.</p>
+<p>Мы ўжо пазнаёміліся з наступнымі тыпамі ў Ruby: integers, floats, strings, arrays, і hashes.
+    Кожны з гэтых тыпаў мы завем <strong>класам (class)</strong>.</p>
+<p>Кожны кантрэктны аб'ект (напрыклад: лік <code>1</code>, дробны лік <code>-0.36</code>, радок <code>"I am radok"</code>,
+    масіў - <code>["big", "array", 42]</code>, хэш - <code>{"a" => 13}</code> і г.д.) мы завем <strong>асобнікам (instance)</strong> класа.</p>
+<p>Калі Вы хацелі даведацца якога класа які-небудзь аб'ект; вось як гэта зрабіць:</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="lit">1.23</span><span class="pun">.</span><span class="kwd">class</span></li><span class="pln">
+  </span><li><span class="str">"hello"</span><span class="pun">.</span><span class="kwd">class</span></li><span class="pln">
+  </span><li><span class="pun">[</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="lit">3</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="lit">1</span><span class="pun">].</span><span class="kwd">class</span></li><span class="pln">
+  </span><li><span class="pun">(</span><span class="lit">1.</span><span class="pun">.</span><span class="lit">5</span><span class="pun">).</span><span class="kwd">class</span></li><span class="pln">
+  </span><li><span class="pun">{</span><span class="str">"key"</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="str">"value"</span><span class="pun">}.</span><span class="kwd">class</span></li><span class="pln">
+  </span><li><span class="kwd">nil</span><span class="pun">.</span><span class="kwd">class</span></li><span class="pln">
+</span></ul>
+</pre>
+<p>Назвы класаў пачынаюцца з вялікай літары.
+    Калі імя класа мае некалькі словаў (напрыклад <code>NilClass</code>),
+    традыцыйна кожнае слова пішыцца з вялікай літары.
+    Гэта завецца <em>стыль вярблюда (upper camel case)</em>,
+    таму што крыху нагадвае гарбы вярблюда :).</p>
+<p>Мета класы?</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="typ">Float</span><span class="pun">.</span><span class="kwd">class</span></li><span class="pln">
+  </span><li><span class="typ">String</span><span class="pun">.</span><span class="kwd">class</span></li><span class="pln">
+  </span><li><span class="typ">Array</span><span class="pun">.</span><span class="kwd">class</span></li><span class="pln">
+  </span><li><span class="typ">Range</span><span class="pun">.</span><span class="kwd">class</span></li><span class="pln">
+  </span><li><span class="typ">Hash</span><span class="pun">.</span><span class="kwd">class</span></li><span class="pln">
+</span></ul>
+</pre>
+<p>І яшчэ больш мета:</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="typ">Class</span><span class="pun">.</span><span class="kwd">class</span></li><span class="pln">
+</span></ul>
+</pre>
+
+
+<h1>Спадкаваньне</h1>
+<p>
+</p><p>Паспрабуйце:</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="lit">5.class</span></li><span class="pln">
+  </span><li><span class="lit">53478290674382906753829067528923506.class</span></li><span class="pln">
+</span></ul>
+</pre>
+<p>З <a href="http://www.ruby-doc.org/core-1.9.3/Fixnum.html" target="_blank">дакумэнтацыі Ruby</a>: "Fixnum можа трымаць цэлыя значэньні якія могуць быць прадстаўлены ў адным машыным слове (мінус 1 біт).
+    Калі значэньне перавышае гэты дыяпазон, значэньне канвэртуецца ў Bignum".
+    Іншымі словамі, маленькія цэлыя лікі - гэта Fixnum,
+    вялікія цэлыя лікі - гэта Bignum.</p>
+<p>Паспрабуйце гэта:</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="lit">1.class</span><span class="pun">.</span><span class="pln">superclass</span></li><span class="pln">
+</span><span class="pln">
+  </span><li><span class="lit">154676457623465471324636734262573564.class</span><span class="pun">.</span><span class="pln">superclass</span></li><span class="pln">
+</span></ul>
+</pre>
+<p>Fixnum і Bignum успадкоўваюцца ад класа Integer.</p>
+<p>Вы можаце стварыць свой клас, які будзе мець усе ўласьцівасьці іншага (суперкласа - бацькі):</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="kwd">class</span><span class="pln"> </span><span class="typ">AwesomeArray</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln"> </span><span class="typ">Array</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="com"># Awesome stuff goes here</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+</span></ul>
+</pre>
+
+<p>Зараз усе мэтады, якія мае Array даступны ў AwesomeArray.
+    Гэта завецца <strong>спадкаваньне</strong>.</p>
+
+<p>Вы можаце даведаццца ад каго ўспадкоўваецца які-небудзь клас мэтадам <code>superclass</code>:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="typ">AwesomeArray</span><span class="pun">.</span><span class="pln">superclass</span></li><span class="pln">
+</span></ul>
+</pre>
+
+<p>Калі Вы ствараеце новы клас, па-дэфолту ён успадкоўваецца ад Object. Даведайцеся ад каго ўспадкоўваецца Object.</p>
+
+<p>Вы можаце даведацца пра ўсе класы, ад які ўспадкоўваецца Ваш клас выкарыстоўваючы мэтад <code>ancestors</code>:</p>
+
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="typ">AwesomeArray</span><span class="pun">.</span><span class="pln">ancestors</span></li><span class="pln">
+</span></ul>
+</pre>
+
+<p>Паспрабуйце мэтад <code>ancestors</code> для масіваў, хэшаў і дыяпазонаў.
+    Ды й увогуле паспрабайце для ўсіх класаў, пра якія Вы ведаеце!</p>
+
+
+<h1>Модулі</h1>
+<p>Паспрабуйце:</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="typ">Array</span><span class="pun">.</span><span class="pln">ancestors</span></li><span class="pln">
+  </span><li><span class="typ">Array</span><span class="pun">.</span><span class="pln">superclass</span></li><span class="pln">
+  </span><li><span class="typ">Array</span><span class="pun">.</span><span class="pln">superclass</span><span class="pun">.</span><span class="pln">superclass</span></li><span class="pln">
+  </span><li><span class="typ">Array</span><span class="pun">.</span><span class="pln">superclass</span><span class="pun">.</span><span class="pln">superclass</span><span class="pun">.</span><span class="pln">superclass</span></li><span class="pln">
+</span></ul>
+</pre>
+<p><code>ancestors</code> кажа што ланцужок спадкаваньня <code>Array</code> ўключае <code>Enumerable</code> і <code>Kernel</code>,
+    але калі мы падыходзім да канца ланцужка спадкаваньняў - <code>BasicObject</code>, мы ня бачым ніводнага з гэтых класаў.
+    Што адбываецца?</p>
+<p><code>Enumerable</code> і <code>Kernel</code> насамрэч не зьяўляюцца класамі;
+    яны ёсьць <strong>модулі (modules)</strong>.
+    Модулі - гэта набор мэтадаў і канстант, якія могуць быць даданы ў некалькі класаў.
+    Модуль <code>Kernel</code> уключаны ў клас <code>Object</code>,
+    і таму, кожны клас, які ўспадкоўваецца ад <code>Object</code>, мае функцыянальнасьць <code>Kernel</code>.
+    Праглядзіце дакумэнтацыю Ruby для <code>Kernel</code>; Вы ўбачыце што Вы карысталіся штам якімі мэтадамі <code>Kernel</code> бяз усьведамленьня гэтага.</p>
+<p>Каб зразумець <code>Enumerable</code>, паглядзіце на <code>Hash.ancestors</code>.
+    Ён і тут таксама!
+    Enumerable - гэта модуль, які можаць быць уключаны ў любы клас, які трымае якую-небудзь калекцыю рэчаў.
+    Шмат мэтадаў, якія мы ведаем для масіваў будуць таксама працаваць і для хэшаў,
+    таму што гэтыя мэтады насамрэч частка модуля <code>Enumerable</code>.
+
+    Чэканіце дакумэнтацыю Ruby для <code>Enumerable</code>.</p>
+
+    <h1>Класы гэта таксама аб'екты</h1>
+    <p>Паглядзіце на гэта:</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="lit">5.class</span></li><span class="pln">
+  </span><li><span class="typ">Fixnum</span><span class="pun">.</span><span class="kwd">class</span></li><span class="pln">
+</span></ul>
+</pre>
+    <p>Калі мы друкуем <code>Fixnum.class</code>, мы выклікаем мэтад у класа.
+        Ці не выглядае гэта трошкі странна? Мы размаўлялі пра тое, што мэтады можна выклікаць толькі ў аб'ектаў?</p>
+    <p>Атрымліваецца што класы таксама аб'екты. Паспрабуйце:</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="lit">5.methods</span></li><span class="pln">
+  </span><li><span class="typ">Fixnum</span><span class="pun">.</span><span class="pln">methods</span></li><span class="pln">
+</span></ul>
+</pre>
+    <p>Трошкі тэрміналёгіі: <code>5</code> гэта <strong>аб'ект</strong> класа <code>Fixnum</code>. Гэтак жа <code>"blah"</code> - гэта аб'ект класа <code>String</code>.</p>
+    <p>Мэтад які выклікаецца ў класа завецца <strong>мэтадам класа</strong>.
+        Мэтад які выклікаецца ў асобніка класа завецца <strong>мэтад асобніка</strong>.</p>
+    <p>Вельмі распаўсюджаны мэтад класаў - гэта <code>new</code>. Паспрабуйце яго для розных класаў. Што ён робіць?</p>
+    <p>Зараз мы ведаем тры тыпа мэтадаў: <strong>мэтады аб'ектаў (асобнікаў)</strong>,
+        якія робяць дзеяньні над аб'ектамі класаў; <strong>мэтады класаў</strong>, якія робяць дзеяньні над класамі;
+        і <strong>глабальныя мэтады</strong>, якія ня робяць дзе над чымсьці канкрэтным. (Тэхнічна, глабальныя мэтады зьяўляюцца мэтадамі класа <code>Object</code>.)</p>
+    <p>У Ruby, амаль усе аб'ект. Спачатку гэта падаецца трошкі дзіўным, але Вы звыкніцеся :)</p>
+
+
+</body>
+</html>
