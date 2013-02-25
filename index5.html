@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        pre {
+            display: block;
+            padding: 9.5px;
+            margin: 0 0 10px;
+            font-size: 13px;
+            line-height: 20px;
+            word-break: break-all;
+            word-wrap: break-word;
+            white-space: pre;
+            white-space: pre-wrap;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0,0,0,0.15);
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+        }
+
+        .prettyprint {
+            padding: 8px;
+            background-color: #f7f7f9;
+            border: 1px solid #e1e1e8;
+        }
+
+        pre.prettyprint {
+            margin-bottom: 20px;
+        }
+
+        code {
+            padding: 2px 4px;
+            color: #d14;
+            background-color: #f7f7f9;
+            border: 1px solid #e1e1e8;
+        }
+
+        .post pre ul {
+            line-height: 0;
+            margin-bottom: -15px;
+            padding: 0;
+            padding: 9px 0 6px 25px;
+        }
+
+        pre ul.irb li, ul.bash li, ul.psql li {
+            list-style-type: none;
+            margin-left: -25px;
+        }
+
+        .post pre ul li{
+            line-height: 20px;
+        }
+
+        pre ul.bash li::before {
+            content: "$ \0020";
+        }
+        pre ul.irb li::before {
+            content: "> \0020";
+        }
+
+        .pln {
+            color: #48484c;
+        }
+
+        code, pre {
+            font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+            font-size:12px;
+        }
+
+        .pun, .opn, .clo {
+            color: #93a1a1;
+        }
+
+        .lit {
+            color: #195f91;
+        }
+
+        .str, .atv {
+            color: #D14;
+        }
+
+        .com {
+            color: #93a1a1;
+        }
+    </style>
+</head>
+<body>
+    <h2>Стварэньне мэтадаў аб'ектаў</h2>
+    <p>Зараз, калі мы ўжо ведаем пра класы, мы можам стварыць яшчэ больш цікавы мэтадаў.
+        Дагэтуль мы стваралі толькі глабальныя мэтады, але большасьці мэтадаў, якімі мы карысталіся былі мэтадамі аб'ектаў (акрамя <code>puts</code> і <code>rand</code>).
+        Гэтыя мэтады завуцца <strong>мэтадамі аб'ектаў</strong> таму што яны выкліклікаюцца ў асобніка класа.</p>
+    <p>Вы ўжо рабілі так, але нагадваю:</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="typ">Float</span><span class="pun">.</span><span class="pln">superclass</span></li><span class="pln">
+  </span><li><span class="typ">Integer</span><span class="pun">.</span><span class="pln">superclass</span></li><span class="pln">
+</span></ul>
+</pre>
+    <p>Уле лікі належаць класу <code>Numeric</code>.</p>
+    <p>Ці памятаеце Вы як мы зрабілі глабальны мэтад <code>add</code>? Давайце зробім тое ж самае толькі для аб'екта.</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="kwd">class</span><span class="pln"> </span><span class="typ">Numeric</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="kwd">def</span><span class="pln"> add</span><span class="pun">(</span><span class="pln">num</span><span class="pun">)</span></li><span class="pln">
+  </span><li><span class="pln">    </span><span class="kwd">self</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> num</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="kwd">end</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+  </span><li><span class="lit">5.add</span><span class="pun">(</span><span class="lit">3</span><span class="pun">)</span></li><span class="pln">
+</span></ul>
+</pre>
+    <p><code>self</code> - гэта спасылка на аб'ект, у якога выклікаецца мэтад.</p>
+    <p>Зараз стварыце мэтады <code>subtract</code>, <code>multiply</code> і <code>divide</code> ў класе <code>Numeric</code>.
+    </p>
+
+        <h2>Рэкурсія</h2>
+
+    <p>Перад тым як мы пачнем пісаць свае ўласныя мэтады аб'ектаў,
+    давайце разглядзім што такое рэкурсія. Рэкурсія, гэта калі мэтад выклікае сам сабе. Клячычны прыклад - гэта падлік фактарыялаў, які мы рабілі раней, карыстаючыся дыяпазонамі.
+        Давайце яшчэ раз падлічым фактарыял карыстаючыся рэкурсіяй.</p>
+        <p>Алгарытм будзе выглядаць вось так:</p>
+        <ul>
+            <li>Калі лік роўны 0, вяртаем 1.</li>
+            <li>Інакш:
+                <ul>
+                    <li>бярэм лік;</li>
+                    <li>памнажаем яго на фактарыял ад яго самаго мінус 1.</li>
+                </ul>
+            </li>
+        </ul>
+        <p>Вось мой код для мэтада падліка фактарыяла:</p>
+<pre class="prettyprint"><span class="kwd">class</span><span class="pln"> </span><span class="typ">Fixnum</span><span class="pln">
+  </span><span class="kwd">def</span><span class="pln"> factorial
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="kwd">self</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">0</span><span class="pln">
+      </span><span class="str">"invalid"</span><span class="pln">
+    </span><span class="kwd">elsif</span><span class="pln"> </span><span class="kwd">self</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> </span><span class="lit">0</span><span class="pln">
+      </span><span class="lit">1</span><span class="pln">
+    </span><span class="kwd">else</span><span class="pln">
+      </span><span class="kwd">self</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">self</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="lit">1</span><span class="pun">).</span><span class="pln">factorial
+    </span><span class="kwd">end</span><span class="pln">
+  </span><span class="kwd">end</span><span class="pln">
+</span><span class="kwd">end</span></pre>
+
+        <h2>Пасьлядоўнасьць Фібаначчы</h2>
+        <p>Окей, час кодзіць :)</p>
+        <p>Вось пачатак пасьлядоўнасьці Фібаначчы: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...</p>
+        <p>Пасьлядоўнасьць Фібаначчы пачынаецца з 0 і 1 (па вызначэньню).
+            Кожны наступны лік - сума двух папярэдніх.</p>
+        <p>Стварыце мэтад <code>fibonacci</code> у класе <code>Integer</code>, які вяртае значэньне пасьлядоўнасьці Фібаначчы, адпавядаючае
+            значэньню цэлага, у якога ён быў выкліканы. Напрыклад,
+            <code>8.fibonacci</code> мусіць вяртаць <code>21</code> (памятайце, што першы індэкс пасьлядоўнасьці - 0). Рэалізуйце гэтый мэтад з дапамогай рэкурсіі.</p>
+        <p>Падумайце чаму будзе патрэбна шмат часу каб падлічыць <code>100.fibonacci</code>.
+            Калі Вы паспрабуеце зрабіць гэта - спатрабуецца насамрэч шмат часу каб падлічыць <code>100.fibonacci</code>; таму, каб спыніць выкананьне праграммы
+            можна ціснуць <em>Ctrl + C</em>.</p>
+        <p>Памятайце што Вы павінны пісаць юніт-тэсты.</p>
+
+
+        <h2>Эфэктыўнасьць Фібаначчы</h2>
+        <p>З мінулага практыкаваньня Вы зразумелі, што падлік пасьлядоўнасьці Фібаначчы выкарыстоўваючы
+            рэкурсію неэфэктыўны.
+            Вось што адбываецца калі Вы выконваеце код <code>5.fibonacci</code>:</p>
+        <ul>
+            <li>Вы выконваеце <code>5.fibonacci</code>, які выконвае:
+                <ul>
+                    <li><code>4.fibonacci</code>, які выконвае:
+                        <ul>
+                            <li><code>3.fibonacci</code>, які выконвае:
+                                <ul>
+                                    <li><code>2.fibonacci</code>, які выконвае:
+                                        <ul>
+                                            <li><code>1.fibonacci</code></li>
+                                            <li><code>0.fibonacci</code></li>
+                                        </ul>
+                                    </li>
+                                    <li><code>1.fibonacci</code></li>
+                                </ul>
+                            </li>
+                            <li><code>2.fibonacci</code>, які выконвае:
+                                <ul>
+                                    <li><code>1.fibonacci</code></li>
+                                    <li><code>0.fibonacci</code></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><code>3.fibonacci</code>, які выконвае:
+                        <ul>
+                            <li><code>2.fibonacci</code>, які выконвае:
+                                <ul>
+                                    <li><code>1.fibonacci</code></li>
+                                    <li><code>0.fibonacci</code></li>
+                                </ul>
+                            </li>
+                            <li><code>1.fibonacci</code>
+                            </li></ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <p>У той час, як рэкурсіўны код вельмі элегантны, прадукцыйнасьць жудасная.
+            На кожнай стадыі падліку колькасьць выкананых мэтадаў падвойваецца,
+            і кожны раз, калі выклікаецца мэтад, яго копія загружаецца ў памяць.
+            Таму <code>100.fibonacci</code> загрузіць мэтад <code>fibonacci</code> у памяць каля 2^100 разоў.
+            Гэта завецца "складанасьць 2^n", таму што яна падвойваецца кожны раз.</p>
+        <p>Больш эфэктыўны спосаб падлічваць Фібаначчы гэта з дапамогай дыяразонаў. Гэтак жа, як мы першапачаткова падлічвалі фактарыял.</p>
+        <p>Вам спатрэбіцца мэтад <code>each</code> у дыяпазонаў:</p>
+<pre class="prettyprint"><span class="pln">size </span><span class="pun">=</span><span class="pln"> </span><span class="lit">5</span><span class="pln">
+</span><span class="pun">(</span><span class="lit">1.</span><span class="pun">.</span><span class="pln">size</span><span class="pun">).</span><span class="pln">each </span><span class="kwd">do</span><span class="pln"> </span><span class="pun">|</span><span class="pln">counter</span><span class="pun">|</span><span class="pln">
+  </span><span class="com"># do something here</span><span class="pln">
+</span><span class="kwd">end</span></pre>
+        <p>Адрэфактарыце Ваш код падліку пасьлядоўнасьці Фібаначчы, каб ён выкарыстоўваў такі падыход.</p>
+
+
+        <h2>Лікі словамі</h2>
+        <p>Стварыце мэтад <code>in_words</code> для класа Fixnum.
+            Калі Вы выклікаеце <code>in_words</code> на цэлам меншы чым 1000, ён мусіць вяртаць лік напісана словамі.</p>
+        <p>Выкарыстоўвайце хэшы.</p>
+        <p>Пачніце з юніт тэстаў для лікаў менш 10,
+            потым для лікаў менш 100, і ў рэшце, для лікаў менш 1000.</p>
+        <p>Гэта ня будзе складана :)</p>
+        <p>Замест таго, каб рабіць рэфактарынг, пасьля таго, як Вы скончыце кодзіць, рабіце
+            рэфактарынг адруз пасьля таго, як скончыце пісаць код для асобнага тэста.
+            Таму Ваш цыкл мусіць выглядаць test-code-refactor, test-code-refactor.</p>
+
+        <h2>Лікі словамі, рэкурсіўна</h2>
+        <p>Давайце дапрацуем 'Лікі словамі' й зробім каб ён працаваў для лікаў менш за адзін трыльён (10^12).
+            Выкарыстоўвайце рэкурсію.</p>
+        <p>Test-code-refactor, test-code-refactor.</p>
+        <p>Дзьве гадзіны на гэта заданьне - гэта выдатны вынік! Гугліце, і самае галоўнае - разбівайце ў галаве заданьне на часткі!
+            Вам у дапамогу Вікіпедыя, Дакумэнтацыя рубі й г.д.</p>
+
+
+        <h2>Стварэньне класа</h2>
+        <p>Вы ўжо так шмат чаго ведаеце!
+            Вы ведаеце як працаваць з некаторымі класамі, выклікаць іх мэтады, працаваць з цыкламі,
+            разгаліноўвацца, і нават ствараць глабальныя й аб'ектныя мэтады.
+            Мы ўрэшце рэшт гатовы каб спазнаць самае сэрца праграмаваньня: стварэньне сваіх уласных класаў.</p>
+        <p>Давайце стварым клас Rectangle:</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="kwd">class</span><span class="pln"> </span><span class="typ">Rectangle</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+</span></ul>
+</pre>
+        <p>Маючы толькі дзьве лініі коду Вы ўжо можаце стварыць новы аб'ект. Выклікайце <code>Rectangle.new</code> і атрымайце прастакутнік.</p>
+        <p>Мэтад <code>new</code> належыць класу <code>BasicObject</code>.
+            Памятайце, калі мы праглядалі продкаў класаў, мы бачылі што кожны клас па-дэфолту ўспадкоўваецца ад класа <code>Object</code>,
+            як, у сваю чаргу, ад класа <code>BasicObject</code>.
+            Вы можаце бачыць тое ж самае й для <code>Rectangle</code>. Надрукуйце <code>Rectangle.ancestors</code>. Таму кожны новы клас аўтаматычна мае мэтад <code>new</code>.</p>
+        <p>Прастакутнік бессэнсоўны калі ён ня мае даўжыні ды шырыні. Выправім гэта.</p>
+<pre class="prettyprint"><ul class="irb"><span class="pln">
+  </span><li><span class="kwd">class</span><span class="pln"> </span><span class="typ">Rectangle</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="kwd">def</span><span class="pln"> initialize</span><span class="pun">(</span><span class="pln">length</span><span class="pun">,</span><span class="pln"> width</span><span class="pun">)</span></li><span class="pln">
+  </span><li><span class="pln">  </span><span class="kwd">end</span></li><span class="pln">
+  </span><li><span class="kwd">end</span></li><span class="pln">
+</span></ul>
+</pre>
+        <p>Зараз мы можам атрымаць прастакутнік 3x5 выклікаючы <code>Rectangle.new(3, 5)</code>.</p>
+        <p>Калі Вы выклікаеце мэтад <code>new</code>, ён потым выклікае аб'ектны мэтад <code>initialize</code>
+            у аб'екта, які быў толькі што створаны. <code>BasicObject</code> мае мэтад <code>initialize</code>,
+            таму, калі Вы ня вызначыце свой уласны <code>initialize</code>,
+            мэтад з <code>BasicObject</code> будзе выкліканы.
+            У гэтым кодзе мы перапісваем мэтад <code>initialize</code> сваім уласным, які прымае два аргумэнта</p>
+        <p>Але ніколі ня трэба выкліка мэтад <code>initialize</code> прама.</p>
+        <p>Стварыце клас <code>Square</code>.</p>
+        <p>Стварыце клас <code>Triangle</code> з мэтадам <code>initialize</code> які прымае тры аргумэнта - бакі трыкутніка.</p>
+
+        <h2>Зьменныя аб'ектаў</h2>
+        <p>Вось як выгладае наш клас <code>Rectangle</code>:</p>
+<pre class="prettyprint"><span class="kwd">class</span><span class="pln"> </span><span class="typ">Rectangle</span><span class="pln">
+  </span><span class="kwd">def</span><span class="pln"> initialize</span><span class="pun">(</span><span class="pln">length</span><span class="pun">,</span><span class="pln"> width</span><span class="pun">)</span><span class="pln">
+  </span><span class="kwd">end</span><span class="pln">
+</span><span class="kwd">end</span></pre>
+        <p>Давайце зараз адчынім <code>Rectangle</code> і створым мэтад, які вяртае перыметр прастакутніка:</p>
+<pre class="prettyprint"><span class="kwd">class</span><span class="pln"> </span><span class="typ">Rectangle</span><span class="pln">
+  </span><span class="kwd">def</span><span class="pln"> initialize</span><span class="pun">(</span><span class="pln">length</span><span class="pun">,</span><span class="pln"> width</span><span class="pun">)</span><span class="pln">
+  </span><span class="kwd">end</span><span class="pln">
+
+  </span><span class="kwd">def</span><span class="pln"> perimeter
+    </span><span class="lit">2</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="pun">(</span><span class="pln">width </span><span class="pun">+</span><span class="pln"> length</span><span class="pun">)</span><span class="pln">
+  </span><span class="kwd">end</span><span class="pln">
+</span><span class="kwd">end</span></pre>
+        <p>Нічога не атрымаліваецца... Калі мы спрабуем выканаць <code>Rectangle.new(5,3).perimeter</code>,
+            мы атрымліваем памылку <code>NameError: undefined local variable or method `width' for #&lt;Rectangle:0x007fe08227caa8&gt;</code>.</p>
+        <p>Такія зьменныя як <code>length</code> і <code>width</code> у нашым мэтадзе <code>initialize</code> завуцца
+            <strong>лакальнымі зьменнымі</strong>.
+            Лакальныя зьменныя жывуць да таго моманту, пакуль ня скончыць выкананьне мэтад, дзе яны былі створаны, і яны даступны толькі ў гэтым мэтадзе.
+            Так як яны былі вызначаны як аргумэнты ў мэтадзе <code>initialize</code>, яны не даступны ў мэтадзе <code>perimeter</code>.</p>
+        <p>Існуе іншы тым зьменных які завецца <strong>зьменныя асобнікаў</strong>. Ён выгладае так:</p>
+<pre class="prettyprint"><span class="kwd">class</span><span class="pln"> </span><span class="typ">Rectangle</span><span class="pln">
+  </span><span class="kwd">def</span><span class="pln"> initialize</span><span class="pun">(</span><span class="pln">length</span><span class="pun">,</span><span class="pln"> width</span><span class="pun">)</span><span class="pln">
+    </span><span class="lit">@length</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> length
+    </span><span class="lit">@width</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> width
+  </span><span class="kwd">end</span><span class="pln">
+
+  </span><span class="kwd">def</span><span class="pln"> perimeter
+    </span><span class="lit">2</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="pun">(</span><span class="lit">@width</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="lit">@length</span><span class="pun">)</span><span class="pln">
+  </span><span class="kwd">end</span><span class="pln">
+</span><span class="kwd">end</span></pre>
+        <p>Зьменныя асобнікаў(аб'ектаў) пачынаюцца з <code>@</code> і існуюць пакуль існуе аб'ект (памятайце, што аб'ект - гэта <strong>асобнік</strong> класа,
+            таму й назва <strong>зьменныя асобніка</strong>).
+            Яны даступны ў кожным мэтадзе, які ёсьць у аб'екта.
+            Звычайна зьменныя аб'ектаў выкарыстоўваюцца калі патрэбна захоўваць нейкі стан аб'екта. Каб гэтая зьменная была даступна ва ўсіх мэтадах.</p>
+        <p>Таму зараз, калі мы карыстаемся зьменным асобніка мы можам выканаць <code>Rectangle.new(5,3).perimeter</code> пасьпяхова.</p>
+<pre class="prettyprint"><span class="pln">my_rectangle </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Rectangle</span><span class="pun">.</span><span class="kwd">new</span><span class="pun">(</span><span class="lit">3</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pun">)</span><span class="pln">
+puts my_rectangle</span><span class="pun">.</span><span class="pln">perimeter</span></pre>
+        <p>Зараз стварыце мэтад, які вяртае перымтр для класа <code>Square</code>. Таксама й для <code>Triangle</code>.</p>
+
+        <h2>Чытачы</h2>
+    <p>Давайце створым прастакутнік зноў:</p>
+<pre class="prettyprint"><span class="kwd">class</span><span class="pln"> </span><span class="typ">Rectangle</span><span class="pln">
+  </span><span class="kwd">def</span><span class="pln"> initialize</span><span class="pun">(</span><span class="pln">length</span><span class="pun">,</span><span class="pln"> width</span><span class="pun">)</span><span class="pln">
+    </span><span class="lit">@length</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> length
+    </span><span class="lit">@width</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> width
+  </span><span class="kwd">end</span><span class="pln">
+</span><span class="kwd">end</span><span class="pln">
+my_rectangle </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Rectangle</span><span class="pun">.</span><span class="kwd">new</span><span class="pun">(</span><span class="lit">4</span><span class="pun">,</span><span class="lit">5</span><span class="pun">)</span></pre>
+        <p>А што калі на патрэбна даведацца пра даўжыню прастакутніка ўжо потым, пасьля таго, як мы яго стварылі? Як Вы гэта зробіце?</p>
+    <p> Не атрымліваецца? Давайце створым мэтад <code>length</code> каб зрабіць гэта:</p>
+<pre class="prettyprint"><span class="kwd">class</span><span class="pln"> </span><span class="typ">Rectangle</span><span class="pln">
+  </span><span class="kwd">def</span><span class="pln"> length
+    </span><span class="lit">@length</span><span class="pln">
+  </span><span class="kwd">end</span><span class="pln">
+</span><span class="kwd">end</span></pre>
+        <p>Калі мы паклічам <code>my_rectangle.length</code>, мы атрымаем даўжыню прастакутніка.</p>
+        <p>Стварыце мэтад <code>width</code>, які вяртае шырыню.</p>
+        <p>Тое ж самае зрабіце й для <code>Square</code> і <code>Triangle</code>.</p>
+
+        <h2>"Пісачы"</h2>
+    <p>Мы можам чытаць зьменныя з прастакутніка, а што калі мы хочам іх зьмяніць?</p>
+<pre class="prettyprint"><span class="kwd">class</span><span class="pln"> </span><span class="typ">Rectangle</span><span class="pln">
+  </span><span class="kwd">def</span><span class="pln"> length</span><span class="pun">=(</span><span class="pln">new_length</span><span class="pun">)</span><span class="pln">
+    </span><span class="lit">@length</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> new_length
+  </span><span class="kwd">end</span><span class="pln">
+</span><span class="kwd">end</span></pre>
+        <p>Зараз мы можам выклікаць <code>my_rectangle.length=(7)</code> каб зьмяніць даўжыню.</p>
+        <p>Таксама можна выкарыстоўваць сінтаксічны цукар - <code>my_rectangle.length = 7</code> каб гэта выглядала нібыта Вы зьмяняеце зьменную.
+            Гэта традыцыйны сінтаксіс Ruby.</p>
+        <p>Вось як выгладае Rectangle зараз:</p>
+<pre class="prettyprint"><span class="kwd">class</span><span class="pln"> </span><span class="typ">Rectangle</span><span class="pln">
+  </span><span class="kwd">def</span><span class="pln"> initialize</span><span class="pun">(</span><span class="pln">length</span><span class="pun">,</span><span class="pln"> width</span><span class="pun">)</span><span class="pln">
+    </span><span class="lit">@length</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> length
+    </span><span class="lit">@width</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> width
+  </span><span class="kwd">end</span><span class="pln">
+
+  </span><span class="kwd">def</span><span class="pln"> length
+    </span><span class="lit">@length</span><span class="pln">
+  </span><span class="kwd">end</span><span class="pln">
+
+  </span><span class="kwd">def</span><span class="pln"> length</span><span class="pun">=(</span><span class="pln">new_length</span><span class="pun">)</span><span class="pln">
+    </span><span class="lit">@length</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> new_length
+  </span><span class="kwd">end</span><span class="pln">
+</span><span class="kwd">end</span></pre>
+        <p>Зрабіце тое ж самае для шырыні й для класаў <code>Square</code> і <code>Triangle</code>.</p>
+
+        <h2>Accessors</h2>
+        <p>Ці ня выгладае гэта трошкі дзіўна што мы павінны пісаць мэтады каб зьвярнуцца да зьменных?
+            Ёсьць больш просты спосаб.</p>
+        <p>Давайце пачнем з таго, што зробім зьменную даступнай:</p>
+<pre class="prettyprint"><span class="kwd">class</span><span class="pln"> </span><span class="typ">Rectangle</span><span class="pln">
+  attr_reader </span><span class="pun">:</span><span class="pln">length
+
+  </span><span class="kwd">def</span><span class="pln"> initialize</span><span class="pun">(</span><span class="pln">length</span><span class="pun">,</span><span class="pln"> width</span><span class="pun">)</span><span class="pln">
+    </span><span class="lit">@length</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> length
+    </span><span class="lit">@width</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> width
+  </span><span class="kwd">end</span><span class="pln">
+</span><span class="kwd">end</span></pre>
+        <p>Гэта штука <code>:length</code> завецца <strong>сымбал (symbol)</strong>.
+            Сымбалы, гэта вельмі простыя аб'екты, якія выкарыстоўваюцца, каб перадаваць дадзеныя.
+            У гэтым прыкладзе мэтад <code>attr_reader</code> карыстаецца сымбалам каб ведаць якую зьменную зрабіць даступнай.</p>
+        <p>Зараз стварыце прастакутнік і выклікайце мэтад <code>length</code> каб даведацца пра шырыню й даўжыню</p>
+        <p>Калі Вы меркавалі што існуе мэтад <code>attr_writer</code> Вы здагадаліся:</p>
+<pre class="prettyprint"><span class="kwd">class</span><span class="pln"> </span><span class="typ">Rectangle</span><span class="pln">
+  attr_reader </span><span class="pun">:</span><span class="pln">length
+  attr_writer </span><span class="pun">:</span><span class="pln">length
+
+  </span><span class="kwd">def</span><span class="pln"> initialize</span><span class="pun">(</span><span class="pln">length</span><span class="pun">,</span><span class="pln"> width</span><span class="pun">)</span><span class="pln">
+    </span><span class="lit">@length</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> length
+    </span><span class="lit">@width</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> width
+  </span><span class="kwd">end</span><span class="pln">
+</span><span class="kwd">end</span></pre>
+        <p>Стварыце прастакутнік і зьмяніце яго даўжыню. Працуе!</p>
+        <p>І зараз усё гэта разам:</p>
+<pre class="prettyprint"><span class="kwd">class</span><span class="pln"> </span><span class="typ">Rectangle</span><span class="pln">
+  attr_accessor </span><span class="pun">:</span><span class="pln">length
+
+  </span><span class="kwd">def</span><span class="pln"> initialize</span><span class="pun">(</span><span class="pln">length</span><span class="pun">,</span><span class="pln"> width</span><span class="pun">)</span><span class="pln">
+    </span><span class="lit">@length</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> length
+    </span><span class="lit">@width</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> width
+  </span><span class="kwd">end</span><span class="pln">
+</span><span class="kwd">end</span></pre>
+        <p>Паспрабуйце мэтад <code>attr_accessor</code> для <code>width</code>.</p>
+        <p>Для класаў <code>Square</code> і <code>Triangle</code> зрабіце даўжыню бакоў даступнай.</p>
+        <p><code>attr_reader</code> гэта тое што завецца <strong>getter</strong> або <strong>reader (чытач)</strong>;
+            <code>attr_writer</code> - гэта <strong>setter</strong> або <strong>writer (пісач) </strong>;
+            <code>attr_accessor</code> - гэта <strong>accessor</strong>.</p>
+
+</body>
+</html>
