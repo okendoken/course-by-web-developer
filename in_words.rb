@@ -85,7 +85,7 @@ class Integer
       " #{notation[thousand**order_of_magnitude_thousands]}" +
       " #{(self - self / (thousand**order_of_magnitude_thousands) * (thousand**order_of_magnitude_thousands)).in_words}"
     elsif self > 99
-        "#{(self / 100).in_words_below_hundred} hundred #{(self - self / 100 * 100).in_words_below_hundred}"
+        "#{(self / 100).in_words_below_hundred} hundred #{(self - self / 100 * 100).in_words}"
     elsif self > 20
       "#{numbers_words[self / 10 * 10]} #{numbers_words[self - self / 10 * 10]}"
     else
